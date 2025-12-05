@@ -34,16 +34,22 @@ static void str_to_file(std::string content, std::string filename)
 	output << content;
 }
 
-ft_replace(std::string& src, std::string occ, std::string subs);
+static void ft_replace(std::string& src, std::string occ, std::string subs)
 {
-	
+	size_t position = 0;
 
+	while(-1 != (position = src.find(occ, position))) //quiza en lugar de -1 "std::string::npos"
+	{
+		src.erase(position, occ.length());
+		src.insert(position, subs);
+		position += subs.length(); 
+	}
 }
 
 int main(int argc, char **argv)
 {
 
-	if (argc =! 4)
+	if (argc != 4)
 	{
 		std::cout <<"Use: ./SED <file> <s1> <s2>" <<std::endl;
 		return 1;
@@ -54,6 +60,7 @@ int main(int argc, char **argv)
 		return 1;
 
 	ft_replace(content, argv[2], argv[3]);
+	//std::cout <<content;
 
 	std::string filename = compose_filename(argv[1]);
 	str_to_file(content, filename);
