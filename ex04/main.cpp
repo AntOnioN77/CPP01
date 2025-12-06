@@ -28,17 +28,25 @@ static std::string f_to_string(char* original)
 
 }
 
-static void str_to_file(std::string content, std::string filename)
+static void str_to_file(const std::string& content, const std::string& filename)
 {
-	std::ofstream output(filename);
+	std::ofstream output(filename.c_str());
+	if(!output)
+	{
+		std::cout <<"fail create " <<filename <<std::endl;
+		return; 
+	}
 	output << content;
 }
 
-static void ft_replace(std::string& src, std::string occ, std::string subs)
+static void ft_replace(std::string& src, const std::string& occ, const std::string& subs)
 {
 	size_t position = 0;
 
-	while(-1 != (position = src.find(occ, position))) //quiza en lugar de -1 "std::string::npos"
+	if(occ.empty())
+		return;
+	
+	while(std::string::npos != (position = src.find(occ, position))) 
 	{
 		src.erase(position, occ.length());
 		src.insert(position, subs);
@@ -60,11 +68,8 @@ int main(int argc, char **argv)
 		return 1;
 
 	ft_replace(content, argv[2], argv[3]);
-	//std::cout <<content;
 
 	std::string filename = compose_filename(argv[1]);
 	str_to_file(content, filename);
-
-
 
 }
