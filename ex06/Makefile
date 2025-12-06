@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98  -pedantic
-NAME = Harl
+NAME = harlFilter
 SOURCES = main.cpp Harl.cpp
 HEADERS = Harl.hpp
 OBJECTS = $(SOURCES:.cpp=.o)
