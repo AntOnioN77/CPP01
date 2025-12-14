@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98  -pedantic
 NAME = Harl
 SOURCES = main.cpp Harl.cpp

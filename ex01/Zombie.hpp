@@ -22,4 +22,6 @@ public:
 	void setName(std::string rename);
 };
 
+Zombie* zombieHorde(int N, std::string name);
+
 #endif

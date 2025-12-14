@@ -22,4 +22,6 @@ public:
 							// el objeto. pero el subject la prototipa asi
 };
 
+void randomChump( std::string name );
+
 #endif

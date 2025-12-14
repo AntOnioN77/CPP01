@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = ZombieHorde
 SOURCES = Zombie.cpp zombieHorde.cpp main.cpp
