@@ -6,14 +6,12 @@
 Zombie::Zombie(): name("no_name") 
 {}
 
-Zombie::Zombie(std::string z_name): name(z_name) 
+Zombie::Zombie(const std::string& z_name): name(z_name) 
 {}
 
 // Copy constructor
-Zombie::Zombie(const Zombie& other)
-{
-	*this = other;
-}
+Zombie::Zombie(const Zombie& other): name(other.name)
+{}
 
 // Assignment operator
 Zombie& Zombie::operator=(const Zombie& other)

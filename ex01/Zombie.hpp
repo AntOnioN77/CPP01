@@ -16,11 +16,11 @@ public:
 	~Zombie();                                   // Destructor
 
 	// Additional constructors and methods
-	Zombie* newZombie( std::string name );
 	void announce( void );	//deberia declararla const puesto que no modifica
 							// el objeto. pero el subject la prototipa asi
 	void setName(std::string rename);
 };
+
 
 Zombie* zombieHorde(int N, std::string name);
 

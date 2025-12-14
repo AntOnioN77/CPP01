@@ -2,44 +2,39 @@
 #include <iostream>
 #include <cstdlib>
 #include <sstream>
-#include <limits.h>
+#include <cerrno>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int n_zombies;
+	long n_zombies;
 	std::string imput;
 	Zombie** heap_zombies;
 	std::stringstream name;
 	std::string str_name;
 
-	if(argc > 1)
-	{
-		std::cout << "Execute vithout args\n";
-		return 1;
-	}
-
 	/*Cuando queremos crear una cantidad de zombies desconocida en
 		tiempo de compilacion usamos memoria dinamica newZombie() */
-	std::cout << "Introduce extra Zombies > ";
+	std::cout << "Enter extra Zombies > ";
 	std::cin >> imput;
+	errno = 0;
 	n_zombies = std::strtol(imput.c_str(), NULL, 10);
 
 	
-	if (n_zombies >= 0 && n_zombies < INT_MAX)
+	if (errno != ERANGE && n_zombies >= 0 && n_zombies <= 100)
 	{
 		heap_zombies = new Zombie*[n_zombies];
-		for(int i = 0; i < n_zombies; i++)
+		for(long i = 0; i < n_zombies; i++)
 		{
 			name << "Heap_zombie_" << i;
 			str_name = name.str();
-			heap_zombies[i] = new Zombie(str_name);
+			heap_zombies[i] = newZombie(str_name);
 			name.str("");
 			heap_zombies[i]->announce();
 		}
 	}
 	else
 	{
-		std::cout << "Invalid request" << std::endl;
+		std::cout << "Invalid input. MAX:100 MIN:0" << std::endl;
 		return 0;
 	}
 
@@ -53,9 +48,11 @@ int	main(int argc, char **argv)
 	}
 
 
-	for(int i = 0; i < n_zombies; i++)
+	for(long i = 0; i < n_zombies; i++)
 	{
 		delete heap_zombies[i];
 	}
 	delete[] heap_zombies;
+
+	return (0);
 }

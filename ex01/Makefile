@@ -10,6 +10,9 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
 
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 debug: CFLAGS += -g3
 debug: clean all
 

@@ -1,14 +1,17 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = ZombieStorm
-SOURCES = Zombie.cpp randomChump.cpp main.cpp
-HEADERS = Zombie.hpp
+SOURCES = Zombie.cpp randomChump.cpp main.cpp newZombie.cpp
+HEADERS = Zombie.hpp Zombie.h
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 debug: CFLAGS += -g3
 debug: clean all
