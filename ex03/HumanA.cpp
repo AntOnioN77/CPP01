@@ -2,26 +2,24 @@
 #include "HumanA.hpp"
 #include <iostream>
 
-HumanA::HumanA(const std::string& name, Weapon& weapon) : weapon(weapon), name(name)
-{
-}
+HumanA::HumanA(const std::string& name, Weapon& weapon) : name(name), weapon(weapon)
+{}
 
-/*
-HumanA::HumanA(const HumanA& human)
-{
-    *this = human;
-}
-*/
 
-HumanA& HumanA::operator=(const HumanA& human)
+HumanA::HumanA(const HumanA& human) : name(human.name), weapon(human.weapon)
+{}
+
+//Prohibido su uso, nada que asignar a weapon&
+/* HumanA& HumanA::operator=(const HumanA& human)
 {
     if(this != &human)
     {
+		std::cout << "ewntra operator=\n";
         name = human.name;
-        weapon = human.weapon;
+        //weapon = human.weapon;//esto seria copiar en weapon= el contenido de  =human.weapon
     }
     return *this;
-}
+}  */
 
 HumanA::~HumanA()
 {}
