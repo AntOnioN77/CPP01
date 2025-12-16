@@ -7,7 +7,7 @@
 int	main(void)
 {
 	long n_zombies;
-	std::string imput;
+	std::string input;
 	Zombie** heap_zombies;
 	std::stringstream name;
 	std::string str_name;
@@ -15,9 +15,9 @@ int	main(void)
 	/*Cuando queremos crear una cantidad de zombies desconocida en
 		tiempo de compilacion usamos memoria dinamica newZombie() */
 	std::cout << "Enter extra Zombies > ";
-	std::cin >> imput;
+	std::cin >> input;
 	errno = 0;
-	n_zombies = std::strtol(imput.c_str(), NULL, 10);
+	n_zombies = std::strtol(input.c_str(), NULL, 10);
 
 	
 	if (errno != ERANGE && n_zombies >= 0 && n_zombies <= 100)

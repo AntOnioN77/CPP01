@@ -24,6 +24,9 @@ HumanB& HumanB::operator=(const HumanB& human)
     return *this;
 }
 
+HumanB::HumanB() : name("Default"), weapon(NULL)
+{}
+
 HumanB::~HumanB()
 {}
 

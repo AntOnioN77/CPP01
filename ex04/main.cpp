@@ -64,12 +64,10 @@ int main(int argc, char **argv)
 	}
 
 	std::string content = f_to_string(argv[1]);
-	if(content.empty())
-		return 1;
 
 	ft_replace(content, argv[2], argv[3]);
 
 	std::string filename = compose_filename(argv[1]);
 	str_to_file(content, filename);
-
 }
+
