@@ -2,7 +2,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = ZombieStorm
 SOURCES = Zombie.cpp randomChump.cpp main.cpp newZombie.cpp
-HEADERS = Zombie.hpp Zombie.h
+HEADERS = Zombie.hpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)
